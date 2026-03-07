@@ -6,7 +6,8 @@
 
 // ── Configuration ──────────────────────────────────────────
 var AI_CONFIG = {
-  endpoint: "https://FHL-2026.cognitiveservices.azure.com/openai/v1/images/generations",
+  endpoint: (typeof window !== "undefined" && window.location.origin ? window.location.origin : "https://localhost:3001") + "/api/generate",
+  directEndpoint: "https://FHL-2026.cognitiveservices.azure.com/openai/v1/images/generations",
   apiKey: __AZURE_AI_KEY__,
   model: "FLUX-1.1-pro",
 };
@@ -35,7 +36,6 @@ function generateWithFlux(prompt, labels) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "api-key": AI_CONFIG.apiKey,
       },
       body: JSON.stringify({
         model: AI_CONFIG.model,
@@ -43,19 +43,21 @@ function generateWithFlux(prompt, labels) {
       }),
     })
     .then(function (res) {
+      console.log("[Stickers++] Fetch response for '" + label + "': status=" + res.status + " url=" + AI_CONFIG.endpoint);
       if (!res.ok) return res.text().then(function (t) { throw new Error("FLUX " + res.status + ": " + t); });
       return res.json();
     })
     .then(function (data) {
       var b64 = data.data[0].b64_json;
+      console.log("[Stickers++] Got image for '" + label + "': b64 length=" + (b64 ? b64.length : 0));
       stickers.push({
         id: "sticker-" + Date.now() + "-" + stickers.length,
         label: label,
-        imageDataUrl: "data:image/jpeg;base64," + b64,
+        imageDataUrl: "data:image/png;base64," + b64,
       });
     })
     .catch(function (err) {
-      console.warn("FLUX failed for " + label + ":", err);
+      console.error("[Stickers++] FLUX FAILED for '" + label + "':", err.message || err);
       // push a placeholder on failure
       stickers.push({
         id: "sticker-" + Date.now() + "-" + stickers.length,

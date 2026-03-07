@@ -110,6 +110,36 @@ module.exports = async () => {
         "Access-Control-Allow-Private-Network": "true",
       },
       setupMiddlewares: (middlewares, devServer) => {
+        // Proxy for Azure AI API to avoid CORS
+        const https = require("https");
+        const azureKey = process.env.AZURE_AI_KEY || "";
+        console.log("[Proxy] API key loaded:", azureKey ? "Yes (" + azureKey.length + " chars)" : "NO KEY!");
+        devServer.app.post("/api/generate", (req, res) => {
+          let body = "";
+          req.on("data", chunk => body += chunk);
+          req.on("end", () => {
+            const options = {
+              hostname: "FHL-2026.cognitiveservices.azure.com",
+              path: "/openai/v1/images/generations",
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "api-key": azureKey,
+              },
+            };
+            const proxyReq = https.request(options, (proxyRes) => {
+              res.setHeader("Content-Type", "application/json");
+              res.status(proxyRes.statusCode);
+              proxyRes.pipe(res);
+            });
+            proxyReq.on("error", (err) => {
+              res.status(500).json({ error: err.message });
+            });
+            proxyReq.write(body);
+            proxyReq.end();
+          });
+        });
+
         // Handle preflight requests for Private Network Access
         devServer.app.use((req, res, next) => {
           if (req.method === "OPTIONS") {
