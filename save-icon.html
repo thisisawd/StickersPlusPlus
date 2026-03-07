@@ -1,0 +1,24 @@
+<!-- Open this file in a browser, paste/drop your icon image, then click Save to generate app-icon.png -->
+<!DOCTYPE html>
+<html>
+<head><title>Save Icon</title></head>
+<body style="font-family:sans-serif;padding:40px;text-align:center;">
+  <h2>Drop or paste your app icon image below</h2>
+  <div id="drop" style="width:300px;height:300px;border:3px dashed #aaa;margin:20px auto;display:flex;align-items:center;justify-content:center;border-radius:12px;cursor:pointer;">
+    <span id="placeholder">Drop image here or Ctrl+V</span>
+    <img id="preview" style="max-width:280px;max-height:280px;display:none;" />
+  </div>
+  <p>After the image appears, right-click the image above and <b>"Save image as..."</b></p>
+  <p>Save it to: <code>assets\app-icon.png</code> in your Stickers++ project folder.</p>
+  <script>
+    const drop = document.getElementById('drop');
+    const preview = document.getElementById('preview');
+    const placeholder = document.getElementById('placeholder');
+    function showImage(src) { preview.src = src; preview.style.display = 'block'; placeholder.style.display = 'none'; }
+    drop.addEventListener('dragover', e => { e.preventDefault(); drop.style.borderColor = '#7B2FF2'; });
+    drop.addEventListener('dragleave', () => { drop.style.borderColor = '#aaa'; });
+    drop.addEventListener('drop', e => { e.preventDefault(); drop.style.borderColor = '#aaa'; const f = e.dataTransfer.files[0]; if(f) { const r = new FileReader(); r.onload = ev => showImage(ev.target.result); r.readAsDataURL(f); }});
+    document.addEventListener('paste', e => { const items = e.clipboardData.items; for(const item of items) { if(item.type.startsWith('image/')) { const f = item.getAsFile(); const r = new FileReader(); r.onload = ev => showImage(ev.target.result); r.readAsDataURL(f); }}});
+  </script>
+</body>
+</html>

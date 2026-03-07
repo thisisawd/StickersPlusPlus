@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Bottom circle - blue -->
+  <ellipse cx="65" cy="78" rx="35" ry="35" fill="#4A90D9"/>
+  <ellipse cx="65" cy="78" rx="35" ry="35" stroke="white" stroke-width="4"/>
+
+  <!-- Second circle - teal -->
+  <ellipse cx="55" cy="72" rx="35" ry="35" fill="#4ECDC4"/>
+  <ellipse cx="55" cy="72" rx="35" ry="35" stroke="white" stroke-width="4"/>
+
+  <!-- Third circle - pink/coral -->
+  <ellipse cx="45" cy="65" rx="35" ry="35" fill="#F06B6B"/>
+  <ellipse cx="45" cy="65" rx="35" ry="35" stroke="white" stroke-width="4"/>
+
+  <!-- Top circle - yellow smiley -->
+  <circle cx="55" cy="50" r="35" fill="#FFD93D"/>
+  <circle cx="55" cy="50" r="35" stroke="white" stroke-width="4"/>
+
+  <!-- Eyes -->
+  <circle cx="44" cy="44" r="4" fill="#1B3A59"/>
+  <circle cx="66" cy="44" r="4" fill="#1B3A59"/>
+
+  <!-- Smile -->
+  <path d="M40 56 Q55 70 70 56" stroke="#1B3A59" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>
