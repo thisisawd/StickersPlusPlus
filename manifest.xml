@@ -9,9 +9,9 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Stickers++" />
   <Description DefaultValue="AI-powered stickers for educators. Generate custom sticker sets to use when grading assignments in OneNote." />
-  <IconUrl DefaultValue="https://thisisawd.github.io/Stickers-/assets/icon-32.png" />
-  <HighResolutionIconUrl DefaultValue="https://thisisawd.github.io/Stickers-/assets/icon-64.png" />
-  <SupportUrl DefaultValue="https://thisisawd.github.io/Stickers-/" />
+  <IconUrl DefaultValue="https://thisisawd.github.io/StickersPlusPlus/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://thisisawd.github.io/StickersPlusPlus/assets/icon-64.png" />
+  <SupportUrl DefaultValue="https://thisisawd.github.io/StickersPlusPlus/" />
 
   <AppDomains>
     <AppDomain>https://thisisawd.github.io</AppDomain>
@@ -22,7 +22,7 @@
   </Hosts>
 
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://thisisawd.github.io/Stickers-/taskpane.html" />
+    <SourceLocation DefaultValue="https://thisisawd.github.io/StickersPlusPlus/taskpane.html" />
   </DefaultSettings>
 
   <Permissions>ReadWriteDocument</Permissions>
