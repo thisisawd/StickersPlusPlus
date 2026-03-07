@@ -5,10 +5,9 @@
    ============================================================ */
 
 // ── Configuration ──────────────────────────────────────────
-/* global __AZURE_AI_KEY__ */
 var AI_CONFIG = {
   endpoint: "https://FHL-2026.cognitiveservices.azure.com/openai/v1/images/generations",
-  apiKey: typeof __AZURE_AI_KEY__ !== "undefined" ? __AZURE_AI_KEY__ : "",
+  apiKey: __AZURE_AI_KEY__,
   model: "FLUX-1.1-pro",
 };
 
