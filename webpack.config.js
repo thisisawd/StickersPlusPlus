@@ -32,7 +32,7 @@ module.exports = async () => {
     },
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: "[name].[contenthash:8].js",
+      filename: "[name].bundle.js",
       clean: true,
     },
     resolve: {
