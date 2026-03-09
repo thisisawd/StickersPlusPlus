@@ -94,8 +94,10 @@ var STYLE_MAPS = {
   "3d shapes": "3D geometric solid shape, shaded realistic rendering, mathematical model, clean white background, no text, no face, no character, simple 3D geometry",
   "3d shapes stickers": "3D geometric solid shape, shaded realistic rendering, mathematical model, clean white background, no text, no face, no character, simple 3D geometry",
   "pusheen cat stickers": "cute Pusheen cat character, kawaii style, soft colors, thick outlines, clean white background, die-cut sticker, no text, adorable illustration",
+  "pusheen cat": "cute Pusheen cat character, kawaii style, soft colors, thick outlines, clean white background, die-cut sticker, no text, adorable illustration",
   "pusheen": "cute Pusheen cat character, kawaii style, soft colors, thick outlines, clean white background, die-cut sticker, no text, adorable illustration",
   "orca whale stickers": "cute cartoon orca whale, kawaii ocean animal, vibrant blue and black, clean white background, die-cut sticker style, no text, playful illustration",
+  "orca whale": "cute cartoon orca whale, kawaii ocean animal, vibrant blue and black, clean white background, die-cut sticker style, no text, playful illustration",
   "orcas": "cute cartoon orca whale, kawaii ocean animal, vibrant blue and black, clean white background, die-cut sticker style, no text, playful illustration",
   "gold stars and rewards": "shiny reward sticker, classroom achievement, metallic gold, clean white background, die-cut sticker, no text, simple illustration",
   "gold stars": "shiny reward sticker, classroom achievement, metallic gold, clean white background, die-cut sticker, no text, simple illustration",
@@ -111,8 +113,10 @@ var STYLE_MAPS = {
 
 var LABEL_MAPS = {
   "pusheen cat stickers": ["Pusheen sleeping", "Pusheen eating pizza", "Pusheen with sunglasses", "Pusheen reading a book", "Pusheen as astronaut", "Pusheen with heart", "Pusheen dancing", "Pusheen with rainbow"],
+  "pusheen cat": ["Pusheen sleeping", "Pusheen eating pizza", "Pusheen with sunglasses", "Pusheen reading a book", "Pusheen as astronaut", "Pusheen with heart", "Pusheen dancing", "Pusheen with rainbow"],
   "pusheen": ["Pusheen sleeping", "Pusheen eating pizza", "Pusheen with sunglasses", "Pusheen reading a book", "Pusheen as astronaut", "Pusheen with heart", "Pusheen dancing", "Pusheen with rainbow"],
   "orca whale stickers": ["Orca jumping", "Orca swimming", "Baby orca with mom", "Orca breaching", "Orca blowing water", "Orca waving fin", "Orca with fish", "Orca pod"],
+  "orca whale": ["Orca jumping", "Orca swimming", "Baby orca with mom", "Orca breaching", "Orca blowing water", "Orca waving fin", "Orca with fish", "Orca pod"],
   "orcas": ["Orca jumping", "Orca swimming", "Baby orca with mom", "Orca breaching", "Orca blowing water", "Orca waving fin", "Orca with fish", "Orca pod"],
   "math manipulatives": ["Ones unit cube", "Tens rod", "Hundreds flat", "Counting cubes", "Fraction circles", "Number line", "Dice", "Calculator"],
   "base 10 blocks": ["Ones unit cube (single small cube)", "Tens rod (10 cubes in a row)", "Hundreds flat (10x10 grid of cubes)", "Ones and tens together", "Tens and hundreds together", "Place value chart with blocks", "Ones tens hundreds together", "Thousand cube (10x10x10)"],
