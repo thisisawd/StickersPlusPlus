@@ -32,7 +32,7 @@ module.exports = async () => {
     },
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: "[name].bundle.js",
+      filename: "[name].[contenthash:8].js",
       clean: true,
     },
     resolve: {
@@ -96,6 +96,11 @@ module.exports = async () => {
             from: "manifest.xml",
             to: "manifest.xml",
           },
+          {
+            from: "public/index.html",
+            to: "index.html",
+            noErrorOnMissing: true,
+          },
         ],
       }),
     ],
@@ -108,6 +113,9 @@ module.exports = async () => {
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
         "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization",
         "Access-Control-Allow-Private-Network": "true",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0",
       },
       setupMiddlewares: (middlewares, devServer) => {
         // Proxy for Azure AI API to avoid CORS
@@ -115,6 +123,7 @@ module.exports = async () => {
         const azureKey = process.env.AZURE_AI_KEY || "";
         console.log("[Proxy] API key loaded:", azureKey ? "Yes (" + azureKey.length + " chars)" : "NO KEY!");
         devServer.app.post("/api/generate", (req, res) => {
+          console.log("[Proxy] Received request to /api/generate");
           let body = "";
           req.on("data", chunk => body += chunk);
           req.on("end", () => {

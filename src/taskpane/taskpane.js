@@ -22,22 +22,9 @@ function getEl(id) {
 /* global Office */
 Office.onReady(function (info) {
   try {
-    // Clear any sticker packs that have broken/placeholder images
-    try {
-      var rawPacks = JSON.parse(localStorage.getItem("stickersplusplus_packs") || "[]");
-      var cleanPacks = rawPacks.filter(function (pack) {
-        // Keep only packs where at least one sticker has a real image (not SVG placeholder)
-        return pack.stickers && pack.stickers.some(function (s) {
-          return s.imageDataUrl && s.imageDataUrl.length > 100;
-        });
-      });
-      if (cleanPacks.length !== rawPacks.length) {
-        localStorage.setItem("stickersplusplus_packs", JSON.stringify(cleanPacks));
-        console.log("Cleaned " + (rawPacks.length - cleanPacks.length) + " broken sticker packs");
-      }
-    } catch (cleanErr) {
-      console.warn("Pack cleanup error:", cleanErr);
-    }
+    // Force clear ALL localStorage data to start fresh
+    localStorage.clear();
+    console.log("[Stickers++] Cleared all localStorage");
 
     store = new StickerPackStore();
     initApp();

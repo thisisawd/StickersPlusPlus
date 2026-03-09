@@ -6,8 +6,7 @@
 
 // ── Configuration ──────────────────────────────────────────
 var AI_CONFIG = {
-  endpoint: (typeof window !== "undefined" && window.location.origin ? window.location.origin : "https://localhost:3001") + "/api/generate",
-  directEndpoint: "https://FHL-2026.cognitiveservices.azure.com/openai/v1/images/generations",
+  endpoint: "https://FHL-2026.cognitiveservices.azure.com/openai/v1/images/generations",
   apiKey: __AZURE_AI_KEY__,
   model: "FLUX-1.1-pro",
 };
@@ -36,6 +35,7 @@ function generateWithFlux(prompt, labels) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "api-key": AI_CONFIG.apiKey,
       },
       body: JSON.stringify({
         model: AI_CONFIG.model,
@@ -57,12 +57,13 @@ function generateWithFlux(prompt, labels) {
       });
     })
     .catch(function (err) {
-      console.error("[Stickers++] FLUX FAILED for '" + label + "':", err.message || err);
-      // push a placeholder on failure
+      var errMsg = err.message || String(err);
+      console.error("[Stickers++] FLUX FAILED for '" + label + "':", errMsg);
+      // Show error in placeholder so user can see what went wrong
       stickers.push({
         id: "sticker-" + Date.now() + "-" + stickers.length,
-        label: label,
-        svg: '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#f0f0f0"/><text x="50" y="55" text-anchor="middle" font-size="10" fill="#999">' + label + '</text></svg>',
+        label: label + " (ERROR)",
+        svg: '<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="100" fill="#fff0f0"/><text x="100" y="30" text-anchor="middle" font-size="8" fill="#c00">ERROR</text><text x="100" y="50" text-anchor="middle" font-size="6" fill="#666">' + errMsg.substring(0, 60).replace(/[<>&"']/g, '') + '</text><text x="100" y="70" text-anchor="middle" font-size="6" fill="#666">' + errMsg.substring(60, 120).replace(/[<>&"']/g, '') + '</text></svg>',
       });
     })
     .then(nextBatch);
